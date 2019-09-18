@@ -1,13 +1,24 @@
-
 package model;
 
 import java.sql.Blob;
 
 public class MyFile {
- private    int id;  
- private  String file_name;
- private Blob the_blob;
- private byte[] byte_array;
+
+    private int id;
+    private String file_name;
+    private Blob the_blob;
+    private byte[] byte_array;
+    private long size;
+
+    
+    
+    public void setSize(long size) {
+        this.size = size;
+    }
+
+    public long getSize() {
+        return size;
+    }
 
     public MyFile() {
     }
@@ -48,7 +59,5 @@ public class MyFile {
     public String toString() {
         return "MyFile{" + "id=" + id + ", file_name=" + file_name + ", the_blob=" + the_blob + ", byte_array=" + byte_array + '}';
     }
- 
- 
-    
+
 }

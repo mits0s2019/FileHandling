@@ -15,8 +15,6 @@ import javax.servlet.http.Part;
 
 public class FileDao {
 
-    private String file_name;
-    private Blob the_blob;
     
 
     public MyFile getFileById(int id) throws SQLException {
@@ -31,7 +29,7 @@ public class FileDao {
             file.setFile_name(rs.getString(1));
             file.setId(rs.getInt(3));
             file.setThe_blob(rs.getBlob(2));
-
+            file.setSize(rs.getInt(4));
         }
         rs.close();
         pr.close();
@@ -53,7 +51,8 @@ public class FileDao {
             file.setFile_name(rs.getString(1));
             file.setThe_blob(rs.getBlob(2));
             file.setId(rs.getInt(3));
-
+            file.setSize(rs.getInt(4));
+            
             filesList.add(file);
         }
         rs.close();
@@ -67,12 +66,13 @@ public class FileDao {
 
         String filename = p.getSubmittedFileName();
 
-        String qr = "insert into myfiles (filename,thefile) values(?,?)";
+        String qr = "insert into myfiles (filename,thefile,size) values(?,?,?)";
         Connection conn = DBUtils.getConnection();
         PreparedStatement pr = conn.prepareStatement(qr);
-
         pr.setString(1, filename);
         pr.setBinaryStream(2, p.getInputStream());
+        pr.setLong(3,p.getSize());
+        
         pr.executeUpdate();
 
         pr.close();

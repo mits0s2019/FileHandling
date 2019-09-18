@@ -66,6 +66,7 @@
                         <tr>
                             <th>#</th> 
                             <th>File</th> 
+                            <th>Size</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -76,6 +77,7 @@
                             <tr>
                                 <td>${count}</td>
                                 <td>${file.file_name}</td>
+                                <td>${file.size} bytes</td>
                                 <td><a href="download?id=${file.id}" class="btn pl-2 pr-2"><i class="fa fa-download"></i> Download</a> </td>
                                 <td><a href="delete?id=${file.id}" id="delete" class="btn pl-3 pr-4"><i class="fa fa-close"></i> Delete</a></td>
                             </tr>
